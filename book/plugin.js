@@ -3,12 +3,16 @@ require([
     "jQuery"
 ], function(gitbook, $) {
     var use_identifier = false;
+    var container = '.book-body .page-inner';
 
-    function resetDisqus() {
+    function resetDisqus(config) {
         var $disqusDiv = $("<div>", {
             "id": "disqus_thread"
         });
-        $(".book-body .page-inner").append($disqusDiv);
+        if(config && config.disqus.container){
+            container = config.disqus.container;
+        }
+        $(container).append($disqusDiv);
 
         if (typeof DISQUS !== "undefined") {
             DISQUS.reset({
@@ -68,7 +72,7 @@ require([
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
 
-        resetDisqus();
+        resetDisqus(config);
     });
 
     gitbook.events.bind("page.change", resetDisqus);
