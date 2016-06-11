@@ -5,7 +5,7 @@ require([
     var use_identifier = false;
     var container = '.book-body .page-inner';
 
-    function resetDisqus(config) {
+    function resetDisqus() {
         var $disqusDiv = $("<div>", {
             "id": "disqus_thread"
         });
@@ -73,7 +73,7 @@ require([
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
 
-        resetDisqus(config);
+        resetDisqus();
     });
 
     gitbook.events.bind("page.change", resetDisqus);
