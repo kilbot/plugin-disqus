@@ -6,6 +6,10 @@ require([
     var container = '.book-body .page-inner';
 
     function resetDisqus() {
+        if(gitbook.state.page.comments === false){
+            return;
+        }
+        
         var $disqusDiv = $("<div>", {
             "id": "disqus_thread"
         });
