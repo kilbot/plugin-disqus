@@ -9,9 +9,6 @@ require([
         var $disqusDiv = $("<div>", {
             "id": "disqus_thread"
         });
-        if(config && config.disqus.container){
-            container = config.disqus.container;
-        }
         $(container).append($disqusDiv);
 
         if (typeof DISQUS !== "undefined") {
@@ -63,6 +60,10 @@ require([
         if (config.disqus.useIdentifier) {
             use_identifier = true;
             var disqus_identifier = currentUrl();
+        }
+        
+        if(config.disqus.container){
+            container = config.disqus.container;
         }
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
